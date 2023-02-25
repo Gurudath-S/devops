@@ -1,4 +1,4 @@
-package com.bits.devops.exception;
+package com.bits.devops.entity;
 
 public class Animal {
 
