@@ -17,6 +17,7 @@ pipeline {
         
         stage('Build and Test') {
             steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/Gurudath-S/devops.git']]])
                 sh 'mvn clean install'
             }
         }
