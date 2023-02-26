@@ -14,10 +14,14 @@ pipeline {
                 git 'https://github.com/Gurudath-S/devops.git'
             }
         }
+         stage('Checkout') {
+      steps {
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Gurudath-S/devops.git']]])
+      }
+    }
         
         stage('Build and Test') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/Gurudath-S/devops.git']]])
                 sh 'mvn clean install'
             }
         }
