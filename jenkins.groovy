@@ -1,25 +1,12 @@
 pipeline {
-    agent any
-  checkout([$class: 'GitSCM', 
-  branches: [[name: '*/main']],
-  userRemoteConfigs: [[url: 'https://github.com/Gurudath-S/devops.git']],
-  extensions: [[$class: 'CredentialsBinding', credentialsId: '42a91fb6-36b6-4b2d-9ef9-5cd6b282c085', gitTool: 'Default']]])
-
-    tools {
-    git 'localgit'
-}   
+    agent any   
     stages {
         stage('Fetch Code') {
             steps {
                 git 'https://github.com/Gurudath-S/devops.git'
             }
         }
-         stage('Checkout') {
-      steps {
-        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Gurudath-S/devops.git']]])
-      }
-    }
-        
+         
         stage('Build and Test') {
             steps {
                 sh 'mvn clean install'
