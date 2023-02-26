@@ -1,6 +1,9 @@
 pipeline {
     agent any
-    
+
+    tools {
+    git 'localgit'
+}   
     stages {
         stage('Fetch Code') {
             steps {
