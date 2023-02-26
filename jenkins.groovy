@@ -21,6 +21,6 @@ pipeline {
                 sh 'cp target/devops.war /opt/tomcat/webapps/'
                 sh '/opt/tomcat/bin/startup.sh'
             }
-        }
-    }
+ }
+}
 }
